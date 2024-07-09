@@ -11,9 +11,9 @@ const sequelize = require("../util/databaseConnect");
 
 router.get("/", async (req, res) => {
   try {
-    //const genre = await Genre.findAll();
-    //res.json(genre);
-    res.send("hello from genre");
+    const genre = await Genre.findAll();
+    res.json(genre);
+    //res.send("hello from genre");
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -24,14 +24,14 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    // const genre = await Genre.findByPk(parseInt(parseInt(req.params.id)));
+    const genre = await Genre.findByPk(parseInt(parseInt(req.params.id)));
 
-    // if (genre) {
-    //   res.json(genre);
-    // } else {
-    //   res.status(404).json({ error: "Genre not found" });
-    // }
-    res.send("hello from genre id");
+    if (genre) {
+      res.json(genre);
+    } else {
+      res.status(404).json({ error: "Genre not found" });
+    }
+    //res.send("hello from genre id");
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

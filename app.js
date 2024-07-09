@@ -2,6 +2,7 @@
 
 /*-------Required Imports--------------------------------------------------------*/
 const express = require("express");
+const cors = require("cors");
 const sequelize = require("./util/databaseConnect");
 const Author = require("./models/authors");
 const Genre = require("./models/genres");
@@ -12,6 +13,8 @@ const app = express();
 const PORT = require("./config");
 
 app.use(express.json());
+app.use(cors());
+
 
 /*--------------------------------------------------------------------------*/
 // Defining Associations
@@ -35,80 +38,7 @@ sequelize
     console.log(err);
   });
 
-// const Author = AuthorModel(sequelize);
-// const Genre = GenreModel(sequelize);
-// const Book = BookModel(sequelize);
-
-//Sync models - syncing them seperately because it is promise based
-// async function syncAuthor() {
-//   //author model sync
-//   try {
-//     await Author.sync();
-//     console.log("Author synchronized successfully.");
-//   } catch (error) {
-//     console.error("Error synchronizing Author model:", error);
-//   }
-//   // genre model sync
-//   try {
-//     await Genre.sync();
-//     console.log("Genre synchronized successfully.");
-//   } catch (error) {
-//     console.error("Error synchronizing Genre model:", error);
-//   }
-// }
-
-// syncAuthor();
-// // //book model sync
-
-// // async function syncBook() {
-// //   try {
-// //     await Book.sync();
-// //     console.log("Book Model synchronized successfully.");
-// //   } catch (error) {
-// //     console.error("Error synchronizing Book model:", error);
-// //   }
-// // }
-
-// // syncBook();
-// setTimeout(() => {
-//   Book.sync()
-//     .then(() => {
-//       console.log("Book Model synchronized successfully.");
-//     })
-//     .catch((err) => {
-//       console.error("Error synchronizing Book model:", err);
-//     });
-// }, 3000);
-
-// /*--------------------------------------------------------------------------*/
-// // fetch is giving issues in table creation with foreign keys (parent not found)
-// // Author.sync()
-// //   .then(() => {
-// //     console.log("Author synchronized successfully.");
-// //   })
-// //   .catch((err) => {
-// //     console.error("Error synchronizing Author model:", err);
-// //   });
-
-// // Genre.sync()
-// //   .then(() => {
-// //     console.log("Genre synchronized successfully.");
-// //   })
-// //   .catch((err) => {
-// //     console.error("Error synchronizing Genre model:", err);
-// //   });
-
-// // Book.sync()
-// //   .then(() => {
-// //     console.log("Book Model synchronized successfully.");
-// //   })
-// //   .catch((err) => {
-// //     console.error("Error synchronizing Book model:", err);
-// //   });
-
 // /*----- Import routes-------------------------------------------------------*/
-// //const routes = require("./routes");
-// //app.use("/api", routes);
 
 // Import routes
 // Routes for Author

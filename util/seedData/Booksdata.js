@@ -2,9 +2,9 @@ const booksData = [
   {
     title: "Pride and Prejudice",
     price: 47.5,
-    publication_date: "1/14/2024",
-    GenreId: 3,
-    AuthorId: 1,
+    publicationDate: "1/14/2024",
+    GenreGenreId: 1,
+    AuthorAuthorId: 2,
   },
   {
     title: "Animal Farm",
