@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // setting up  Sequelize connection pool
-const sequelize = new Sequelize("bookstore", "root", "Ldbb@133385", {
+const sequelize = new Sequelize("bookshelf", "root", "Ldbb@133385", {
   host: "localhost",
   dialect: "mysql",
   logging: (...msg) => console.log(msg),

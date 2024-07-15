@@ -15,15 +15,20 @@ const PORT = require("./config");
 app.use(express.json());
 app.use(cors());
 
-
 /*--------------------------------------------------------------------------*/
 // Defining Associations
 
-Book.belongsTo(Genre);
-Genre.hasMany(Book);
+Book.belongsTo(Genre, { foreignKey: "genreId" });
+Genre.hasMany(Book, {
+  foreignKey: "genreId",
+  onDelete: "RESTRICT",
+});
 
-Book.belongsTo(Author);
-Author.hasMany(Book);
+Book.belongsTo(Author, { foreignKey: "authorId" });
+Author.hasMany(Book, {
+  foreignKey: "authorId",
+  onDelete: "RESTRICT",
+});
 
 /*--------------------------------------------------------------------------*/
 // Syncing models
@@ -55,7 +60,7 @@ app.use("/books", bookRoutes);
 
 //HomePage
 app.get("/", (req, res) => {
-  res.send("Welcome to the Express-Sequelize demo!");
+  res.send("Welcome to the Express-Sequelize new demo!");
 });
 
 // Server listening

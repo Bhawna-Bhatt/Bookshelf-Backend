@@ -5,24 +5,35 @@ const Genre = require("./genres");
 const Author = require("./authors");
 
 const Books = sequelize.define("Books", {
-  bookId: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
 
   price: {
-    type: DataTypes.DECIMAL,
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
   publicationDate: {
     type: DataTypes.DATEONLY,
     allowNull: false,
+  },
+  authorId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Author,
+      key: "id",
+    },
+  },
+  genreId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Genre,
+      key: "id",
+    },
   },
 });
 

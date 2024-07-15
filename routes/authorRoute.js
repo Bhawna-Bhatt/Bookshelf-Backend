@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const [updated] = await Author.update(req.body, {
-      where: { authorId: req.params.id },
+      where: { id: req.params.id },
     });
     if (updated) {
       const updatedUser = await Author.findByPk(req.params.id);
@@ -77,7 +77,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Author.destroy({
-      where: { authorId: req.params.id },
+      where: { id: req.params.id },
     });
     if (deleted) {
       res.status(204).end();
