@@ -7,6 +7,7 @@ const Book = require("../models/books");
 const sequelize = require("../util/databaseConnect");
 const Books = require("../models/books");
 const Author = require("../models/authors");
+const Genre = require("../models/genres");
 
 /*--------------------------------------------------------------------------*/
 //GET /books : Retrieve a list of all books
@@ -99,7 +100,7 @@ router.get("/bookauthor/:id", async (req, res) => {
       where: {
         bookId: req.params.id,
       },
-      include: Author,
+      include: [Author, Genre],
     });
     res.status(201).json(bookWithAuthor);
   } catch (err) {
